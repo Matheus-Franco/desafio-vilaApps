@@ -41,7 +41,8 @@
      ],
      "no-use-before-define": "off",
      "prettier/prettier": "error",
-     "prefer-const": "off"
+     "prefer-const": "off",
+     "@typescript-eslint/no-explicit-any": "off"
     },
     "settings": {
       "import/resolver": {

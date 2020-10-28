@@ -58,6 +58,11 @@ export const Button = styled.button`
   align-items: center;
   justify-content: center;
 
+  &.roman-result {
+    height: 100%;
+    font-size: 16px;
+  }
+
   &:hover {
     color: #494949;
     background: #eedd43;
@@ -91,6 +96,10 @@ export const ResultArea = styled.div`
 
   font-size: 32px;
   color: #fff;
+
+  &.roman {
+    padding: 0;
+  }
 `;
 
 export const ButtonDetails = styled.button`
