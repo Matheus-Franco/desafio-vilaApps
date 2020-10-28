@@ -16,6 +16,11 @@ export const Content = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 450px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const Text = styled.p`

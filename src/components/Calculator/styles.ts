@@ -10,10 +10,14 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  width: 30%;
+  width: 450px;
   padding: 16px;
   background: #494949;
   border-radius: 8px;
+
+  @media (max-width: 450px) {
+    width: 300px;
+  }
 `;
 
 export const FirstLine = styled.div`
