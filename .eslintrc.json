@@ -42,7 +42,8 @@
      "no-use-before-define": "off",
      "prettier/prettier": "error",
      "prefer-const": "off",
-     "@typescript-eslint/no-explicit-any": "off"
+     "@typescript-eslint/no-explicit-any": "off",
+     "no-alert": "off"
     },
     "settings": {
       "import/resolver": {

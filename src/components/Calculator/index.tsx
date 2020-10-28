@@ -57,6 +57,35 @@ const Calculator: React.FC = () => {
     (type: 'sum' | 'sub') => {
       const separateItems = algarisms.split('');
 
+      let plus = 0;
+      let sulp = 0;
+
+      separateItems.forEach(each => {
+        if (each === '+') {
+          plus += 1;
+        }
+
+        if (each === '-') {
+          sulp += 1;
+        }
+      });
+
+      if (plus > 0 && sulp > 0) {
+        alert(
+          'Não é possivel realizar um cálculo de adição e subtração na mesma equação.',
+        );
+        setAlgarisms('');
+
+        return;
+      }
+
+      if (plus === 0 && sulp === 0) {
+        alert("Digite o símbolo do respectivo cálculo. Ex: '+' ou '-'.");
+        setAlgarisms('');
+
+        return;
+      }
+
       let total = 0;
 
       separateItems.filter(item => {
