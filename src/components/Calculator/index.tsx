@@ -20,7 +20,7 @@ const Calculator: React.FC = () => {
   map.set('D', 500);
   map.set('M', 1000);
 
-  const convertToRoman: Array<number | string> = [
+  const convertToRoman: any = [
     1000,
     'M',
     900,
@@ -102,7 +102,7 @@ const Calculator: React.FC = () => {
       while (getResult >= convertToRoman[i]) {
         myString += convertToRoman[i + 1];
 
-        getResult -= Number(convertToRoman[i]);
+        getResult -= convertToRoman[i];
       }
     }
 

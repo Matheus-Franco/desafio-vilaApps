@@ -1,4 +1,14 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const appearFromTop = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  } to {
+    opacity: 1;
+    transform: translateY(0)
+  }
+`;
 
 export const Container = styled.div`
   width: 100vw;
@@ -127,7 +137,9 @@ export const Details = styled.div`
   margin-top: 24px;
   padding: 16px;
   background: #5f5f5f;
-  font-size: 18px;
+  font-size: 16px;
   border-radius: 8px;
   color: #fff;
+
+  animation: ${appearFromTop} 0.5s;
 `;

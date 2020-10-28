@@ -15,15 +15,22 @@ export const Content = styled.div`
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
-  @media (max-width: 450px) {
-    display: flex;
-    flex-direction: column;
+  svg {
+    color: #eedd43;
   }
 `;
 
 export const Text = styled.p`
   color: #fff;
   font-size: 20px;
+  margin: 0 16px;
+
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 450px) {
+    margin: 0 16px;
+  }
 `;
