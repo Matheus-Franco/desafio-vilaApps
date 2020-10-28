@@ -24,6 +24,7 @@ export const Content = styled.div`
   padding: 16px;
   background: #494949;
   border-radius: 8px;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
 
   @media (max-width: 450px) {
     width: 300px;
