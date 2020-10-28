@@ -20,6 +20,35 @@ const Calculator: React.FC = () => {
   map.set('D', 500);
   map.set('M', 1000);
 
+  const convertToRoman: Array<number | string> = [
+    1000,
+    'M',
+    900,
+    'CM',
+    500,
+    'D',
+    400,
+    'CD',
+    100,
+    'C',
+    90,
+    'XC',
+    50,
+    'L',
+    40,
+    'XL',
+    10,
+    'X',
+    9,
+    'IX',
+    5,
+    'V',
+    4,
+    'IV',
+    1,
+    'I',
+  ];
+
   const showDetails = useCallback(() => {
     setIsOpen(!isOpen);
   }, [isOpen]);
@@ -69,45 +98,17 @@ const Calculator: React.FC = () => {
       setIsNegative(true);
     }
 
-    const convertToRoman: any = [
-      1000,
-      'M',
-      900,
-      'CM',
-      500,
-      'D',
-      400,
-      'CD',
-      100,
-      'C',
-      90,
-      'XC',
-      50,
-      'L',
-      40,
-      'XL',
-      10,
-      'X',
-      9,
-      'IX',
-      5,
-      'V',
-      4,
-      'IV',
-      1,
-      'I',
-    ];
-
     for (let i = 0; getResult > 0 && i < convertToRoman.length; i += 2) {
       while (getResult >= convertToRoman[i]) {
         myString += convertToRoman[i + 1];
 
-        getResult -= convertToRoman[i];
+        getResult -= Number(convertToRoman[i]);
       }
     }
 
     setRomanResult(myString);
     setShowRomanResult(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [numberResult]);
 
   return (
@@ -140,13 +141,21 @@ const Calculator: React.FC = () => {
             <Styles.Label>Resultado em Romano:</Styles.Label>
             {showRomanResult ? (
               <Styles.ResultArea>
-                {isNegative === true ? (
+                {romanResult.length > 0 ? (
                   <>
-                    {' - '}
-                    {romanResult}
+                    {isNegative === true ? (
+                      <>
+                        {' - '}
+                        {romanResult}
+                      </>
+                    ) : (
+                      romanResult
+                    )}
                   </>
                 ) : (
-                  romanResult
+                  <>
+                    <p>Vazio</p>
+                  </>
                 )}
               </Styles.ResultArea>
             ) : (
