@@ -1,4 +1,3 @@
-import { Console } from 'console';
 import React, { useCallback, useState } from 'react';
 
 import * as Styles from './styles';
@@ -84,12 +83,12 @@ const Calculator: React.FC = () => {
       let plus = 0;
       let sulp = 0;
 
-      output.forEach(each => {
-        if (each === '+') {
+      output.forEach(symbol => {
+        if (symbol === '+') {
           plus += 1;
         }
 
-        if (each === '-') {
+        if (symbol === '-') {
           sulp += 1;
         }
       });
@@ -112,17 +111,33 @@ const Calculator: React.FC = () => {
 
       let total = 0;
 
-      output.filter(item => {
-        if (map.has(item)) {
+      output.filter(element => {
+        if (element.length >= 2 && !map.has(element)) {
+          element.split('').forEach(each => {
+            if (type === 'sum') {
+              total += Number(map.get(each));
+            }
+
+            if (type === 'sub') {
+              if (total === 0) {
+                total = Number(map.get(each));
+              } else {
+                total -= Number(map.get(each));
+              }
+            }
+          });
+        }
+
+        if (map.has(element)) {
           if (type === 'sum') {
-            total += Number(map.get(item));
+            total += Number(map.get(element));
           }
 
           if (type === 'sub') {
             if (total === 0) {
-              total = Number(map.get(item));
+              total = Number(map.get(element));
             } else {
-              total -= Number(map.get(item));
+              total -= Number(map.get(element));
             }
           }
         }
