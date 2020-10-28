@@ -1,3 +1,4 @@
+import { Console } from 'console';
 import React, { useCallback, useState } from 'react';
 
 import * as Styles from './styles';
@@ -13,11 +14,17 @@ const Calculator: React.FC = () => {
 
   const map = new Map();
   map.set('I', 1);
+  map.set('IV', 4);
   map.set('V', 5);
+  map.set('IX', 9);
   map.set('X', 10);
+  map.set('XL', 40);
   map.set('L', 50);
+  map.set('XC', 90);
   map.set('C', 100);
+  map.set('CD', 400);
   map.set('D', 500);
+  map.set('CM', 900);
   map.set('M', 1000);
 
   const convertToRoman: any = [
@@ -55,12 +62,29 @@ const Calculator: React.FC = () => {
 
   const generateResult = useCallback(
     (type: 'sum' | 'sub') => {
-      const separateItems = algarisms.split('');
+      const operations = ['+', '-'];
+      const separateItems = algarisms;
+      const output = [];
+      let aux = '';
+
+      separateItems.split('').forEach(element => {
+        if (operations.includes(element)) {
+          output.push(aux);
+          output.push(element);
+          aux = '';
+        } else {
+          aux += element;
+        }
+      });
+
+      if (aux.length > 0) {
+        output.push(aux);
+      }
 
       let plus = 0;
       let sulp = 0;
 
-      separateItems.forEach(each => {
+      output.forEach(each => {
         if (each === '+') {
           plus += 1;
         }
@@ -88,7 +112,7 @@ const Calculator: React.FC = () => {
 
       let total = 0;
 
-      separateItems.filter(item => {
+      output.filter(item => {
         if (map.has(item)) {
           if (type === 'sum') {
             total += Number(map.get(item));
