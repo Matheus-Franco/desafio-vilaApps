@@ -110,8 +110,9 @@ const Calculator: React.FC = () => {
       }
 
       let total = 0;
+      let counter = 0;
 
-      output.filter(element => {
+      output.forEach(element => {
         if (element.length >= 2 && !map.has(element)) {
           element.split('').forEach(each => {
             if (type === 'sum') {
@@ -134,15 +135,14 @@ const Calculator: React.FC = () => {
           }
 
           if (type === 'sub') {
-            if (total === 0) {
+            if (counter === 0) {
               total = Number(map.get(element));
+              counter += 1;
             } else {
               total -= Number(map.get(element));
             }
           }
         }
-
-        return null;
       });
 
       setRomanResult('');
