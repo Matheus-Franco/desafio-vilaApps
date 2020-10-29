@@ -93,31 +93,24 @@ const Calculator: React.FC = () => {
         }
       });
 
-      if (type === 'sum' && output.includes('-')) {
-        alert("Digite o símbolo do respectivo cálculo. Ex: '+' ou '-'.");
+      const hasTwoSymbols = plus > 0 && sulp > 0;
+      const hasNoSymbol = plus === 0 && sulp === 0;
+
+      if (hasTwoSymbols || hasNoSymbol) {
+        alert('Por favor, digite uma equação correta.');
+
         setAlgarisms('');
 
         return;
       }
 
-      if (type === 'sub' && output.includes('+')) {
-        alert("Digite o símbolo do respectivo cálculo. Ex: '+' ou '-'.");
-        setAlgarisms('');
-
-        return;
-      }
-
-      if (plus > 0 && sulp > 0) {
+      if (
+        (type === 'sum' && output.includes('-')) ||
+        (type === 'sub' && output.includes('+'))
+      ) {
         alert(
-          'Não é possivel realizar um cálculo de adição e subtração na mesma equação.',
+          "Digite o símbolo do respectivo cálculo. Ex: '+' para adiçao ou '-' para subtração.",
         );
-        setAlgarisms('');
-
-        return;
-      }
-
-      if (plus === 0 && sulp === 0) {
-        alert("Digite o símbolo do respectivo cálculo. Ex: '+' ou '-'.");
         setAlgarisms('');
 
         return;
