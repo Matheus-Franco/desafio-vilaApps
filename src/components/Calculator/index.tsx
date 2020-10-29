@@ -93,6 +93,20 @@ const Calculator: React.FC = () => {
         }
       });
 
+      if (type === 'sum' && output.includes('-')) {
+        alert("Digite o símbolo do respectivo cálculo. Ex: '+' ou '-'.");
+        setAlgarisms('');
+
+        return;
+      }
+
+      if (type === 'sub' && output.includes('+')) {
+        alert("Digite o símbolo do respectivo cálculo. Ex: '+' ou '-'.");
+        setAlgarisms('');
+
+        return;
+      }
+
       if (plus > 0 && sulp > 0) {
         alert(
           'Não é possivel realizar um cálculo de adição e subtração na mesma equação.',
